@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,8 +11,37 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.administrator.countdowntextview.MainActivity">
 
-    <TextView
+    <com.example.countdowntextviewlib.CountDownTextView
+        android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        app:maxTime="hour"
+        android:textSize="16sp"
+        android:textColor="#666666"
+        app:beforeTextColor="#ff4401"
+        app:afterTextColor="#000000"
+        app:textBefore="剩下"
+        app:textAfter="再次发送"/>
+
+    <Button
+        android:onClick="onStartTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="开始计时"/>
+    <Button
+        android:onClick="onStopTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="停止计时"/>
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:inputType="number"
+        android:hint="设置倒计时秒数"/>
+
 </RelativeLayout>
