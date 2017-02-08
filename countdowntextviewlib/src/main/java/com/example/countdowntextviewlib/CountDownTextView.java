@@ -207,10 +207,9 @@ public class CountDownTextView extends TextView {
         //最大计时级别，0-3 秒-天
         switch (maxTime) {
             case 3:
-
                 day = (int) (second / 86400);
                 second %= 86400;
-                if (isShowHighOrderZero && day > 0) {
+                if (day > 0 || isShowHighOrderZero) {
                     result.append(day).append("天");
                 }
             case 2:
@@ -230,7 +229,12 @@ public class CountDownTextView extends TextView {
             case 1:
                 minute = (int) (second / 60);
                 second %= 60;
-                if (isShowHighOrderZero && (day > 0 || hour > 0 || minute > 0)) {
+                if (isShowHighOrderZero) {
+                    if (isFillLength && minute < 10) {
+                        result.append(0);
+                    }
+                    result.append(minute).append(":");
+                } else if (day > 0 || hour > 0 || minute > 0) {
                     if (isFillLength && minute < 10) {
                         result.append(0);
                     }
